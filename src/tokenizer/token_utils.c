@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 14:34:40 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/11/01 16:58:55 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/11/02 13:37:16 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,3 +53,24 @@ void	tokadd_back(t_token **lst, t_token *new)
 	l->next = new;
 }
 
+int	check_m_char(char str)
+{
+	int	j;
+
+	j = 0;
+	while (j < 9)
+	{
+		if (str == METACHARACTERS[j])
+			return (1);
+		j++;
+	}
+	return (0);
+}
+
+void	add_token(t_token **token, char *str)
+{
+	t_token	*temp;
+
+	temp = new_node(str);
+	tokadd_back(token, temp);
+}

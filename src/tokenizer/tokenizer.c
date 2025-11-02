@@ -3,80 +3,83 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 15:41:12 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/11/01 23:02:56 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/11/02 15:35:18 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tokenizing.h"
 
-static char	*get_word(char *str);
-
 // Take string and split it to diff token
 t_token	**tokenizer(char *str)
 {
-	// int		i;
-	char	*temp;
+	int		i;
+	t_token	*token;
 	char	**cmd;
 	
 	if (!str)
 		return (NULL);
-	cmd = ft_split(str, ' ');
-	temp = get_word(str);
-	printf("%s\n", temp);
+	i = 0;
+	
 	return (NULL);
 }
 
-char	*get_word(char *str)
+void	create_m_token(t_token **tok, char token)
 {
-	static int	start;
-	int			j;
-	int			i;
-	char		*temp;
+	if (token == '|')
+		return (add_token(tok, "|"));
+	else if(token == '<')
+		return (add_token(tok, "<"));
+	else if(token == '<')
+		return (add_token(tok, ">"));
+	else if(token == '<')
+		return (add_token(tok, "("));
+	else if(token == '<')
+		return (add_token(tok, ")"));
+}
+
+void	create_w_token(t_token **token, char *str)
+{
+	t_lexer	*lex;
+
+	if (!str)
+		return (NULL);
+	lex->start = 0;
+	lex->end = 0;
+	while (str[lex->start])
+	{
+		if (check_m_char(str[lex->end]) && str[lex->end] != 32)
+			lex->end++;
+		if (str[lex->end] == 32)
+			add_token(token, ft_substr(str, lex->start, (lex->end - lex->start)));
+	}
+}
+
+void	create_token(t_token **token, char *str)
+{
+	int		start;
+	int		end;
+	int		i;
+	char	*temp;
 
 	if (!str)
 		return (NULL);
 	i = 0;
-	while (str[i + start] != 32)
+	start = 0;
+	end = 0;
+	while (str[i])
+	{
+		if (!check_m_char(str[i]))
+		{
+			create_m_token(token, str[i]);
+			start++;
+		}
+		else
+			end++;
 		i++;
-	temp = malloc(sizeof(char) * i);
-	if (!temp)
-		return (NULL);
-	j = 0;
-	while (str[j + start])
-	{
-		temp[j] = str[j + start];
-		j++;
 	}
-	temp[j] = '\0';
-	j = 0;
-	start += (i + 1);
-	if (str[i] == '\0')
-		start = 0;
-	return (temp);
-}
-
-// check for metacharacters, if metacharcter found, return true
-int	check_m_char(char str)
-{
-	int	j;
-
-	j = 0;
-	while (j < 9)
-	{
-		if (str == METACHARACTERS[j])
-			return (1);
-		j++;
-	}
-	return (0);
-}
-
-void	add_token(t_token **token, char *str)
-{
-	t_token	*temp;
-
-	temp = new_node(str);
-	tokadd_back(token, temp);
+	temp = ft_substr(str, start, (end - start));
+	add_token(token, temp);
 }
