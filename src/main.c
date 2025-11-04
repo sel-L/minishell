@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 10:50:10 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/11/01 17:02:14 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/11/04 17:30:42 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 int	main()
 {
 	char	*line;
+	__uint128_t i;
 
+	i = 0;
 	while (1)
 	{
 		line = readline(" ");

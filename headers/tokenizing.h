@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 15:41:54 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/11/02 15:25:52 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/11/04 17:30:51 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,14 @@ typedef struct	s_token
 
 typedef struct	s_lexer
 {
-	int	start;
-	int	end;
-	int	size;
-	int	quote_flag;
+	int	quote;
 }				t_lexer;
+
+typedef enum t_quotes
+{
+	NO_QUOTE,
+	QUOTE,
+}			s_quote;
 
 int		check_m_char(char str);
 t_token	*new_node(char *str);
