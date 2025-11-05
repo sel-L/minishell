@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizing.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wee <wee@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 15:41:54 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/11/05 16:34:04 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/11/05 22:31:36 by wee              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef enum t_quotes
 
 int		check_m_char(char str);
 t_token	*new_node(char *str);
-t_token	**tokenizer(char *str);
+void	tokenizer(char *str);
 void	tokadd_back(t_token **lst, t_token *new);
 void	add_token(t_token **token, char *str);
 void	create_token(t_token **token, char *str);

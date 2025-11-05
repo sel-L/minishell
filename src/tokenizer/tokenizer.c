@@ -3,52 +3,59 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wee <wee@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 15:41:12 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/11/05 17:06:56 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/11/05 23:45:35 by wee              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tokenizing.h"
-char	*find_token(t_lexer *lex, char *str);
+t_lexer *create_and_init_lex(char *str);
 
 // Take string and split it to diff token
-t_token	**tokenizer(char *str)
+void tokenizer(char *str)
 {
-	t_lexer *lex;
-	char	*temp;
+	t_lexer *lexer;
 
-	lex = malloc(sizeof(t_lexer));
-	if (!str)
-		return (NULL);
-	lex->start = str;
-	temp = find_token(lex, str);
-	printf("%s\n", temp);
-	free (temp);
-	return (NULL);
+	lexer = create_and_init_lex(str);
+	printf("*start is %c\n", *lexer->start);
+	printf("start is %s\n", lexer->start);
+	return ;
 }
 
-void	create_m_token(t_token **tok, char token)
+void create_m_token(t_token **tok, char token)
 {
 	if (token == '|')
 		return (add_token(tok, "|"));
-	else if(token == '<')
+	else if (token == '<')
 		return (add_token(tok, "<"));
-	else if(token == '<')
+	else if (token == '<')
 		return (add_token(tok, ">"));
-	else if(token == '<')
+	else if (token == '<')
 		return (add_token(tok, "("));
-	else if(token == '<')
+	else if (token == '<')
 		return (add_token(tok, ")"));
+	return ;
 }
 
-char	*find_token(t_lexer *lex, char *str)
+void	find_token(t_token **token, t_lexer *lex)
 {
-	lex->quote = NO_QUOTE;
-	while (lex->end)
+	while (*lex->start)
 	{
 		
 	}
 }
 
+t_lexer *create_and_init_lex(char *str)
+{
+	t_lexer *lex;
+
+	lex = malloc(sizeof(t_lexer));
+	if (!lex || !str)
+		return (NULL);
+	lex->start = str;
+	lex->end = lex->start;
+	lex->quote = NO_QUOTE;
+	return (lex);
+}
