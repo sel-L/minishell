@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 15:41:54 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/11/04 17:30:51 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/11/05 16:34:04 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ typedef struct	s_token
 
 typedef struct	s_lexer
 {
+	char	*start;
+	char	*end;
 	int	quote;
 }				t_lexer;
 
@@ -40,6 +42,6 @@ t_token	*new_node(char *str);
 t_token	**tokenizer(char *str);
 void	tokadd_back(t_token **lst, t_token *new);
 void	add_token(t_token **token, char *str);
-
+void	create_token(t_token **token, char *str);
 
 #endif
