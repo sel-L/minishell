@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizing.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wee <wee@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 15:41:54 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/11/05 22:31:36 by wee              ###   ########.fr       */
+/*   Updated: 2025/11/06 11:37:39 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,16 @@ typedef struct	s_token
 {
 	char			*token;
 	int				size;
+	int				type;
 	struct s_token	*next;
-}				t_token;
+}	t_token;
 
 typedef struct	s_lexer
 {
 	char	*start;
 	char	*end;
-	int	quote;
-}				t_lexer;
+	int		quote;
+}	t_lexer;
 
 typedef enum t_quotes
 {
@@ -43,5 +44,6 @@ void	tokenizer(char *str);
 void	tokadd_back(t_token **lst, t_token *new);
 void	add_token(t_token **token, char *str);
 void	create_token(t_token **token, char *str);
+void	create_m_token(t_token **tok, char token);
 
 #endif
