@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wee <wee@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 10:50:10 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/11/05 22:05:54 by wee              ###   ########.fr       */
+/*   Updated: 2025/11/07 12:07:52 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	main()
-{
-	char	*line;
+// int	main()
+// {
+// 	char	*line;
 
-	while (1)
-	{
-		line = readline(" ");
-		tokenizer(line);
-	}
-	return (0);
-}
+// 	while (1)
+// 	{
+// 		line = readline(" ");
+// 		tokenizer(line);
+// 	}
+// 	return (0);
+// }
