@@ -81,7 +81,7 @@ $(STRING_DIR)/ft_subarr_str.c \
 $(STRING_DIR)/ft_strnstr_2d.c \
 $(STRING_DIR)/ft_strarr_len.c \
 $(STRING_DIR)/ft_strarr_strlen.c \
-$(STRING_DIR)/ft_flatten.c\
+$(STRING_DIR)/ft_flatten.c \
 $(STRING_DIR)/ft_strarrdup.c \
 # $(STRING_DIR)/ft_vstrjoin.c \
 # $(IO_DIR)/ft_printf_basic.c \
