@@ -6,7 +6,7 @@
 /*   By: joloo <joloo@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 11:39:05 by joloo             #+#    #+#             */
-/*   Updated: 2025/11/13 13:00:31 by joloo            ###   ########.fr       */
+/*   Updated: 2025/11/14 11:41:43 by joloo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ typedef struct s_token
 }	t_token;
 
 t_token	*tokenize(char *input);
+void	free_tokens(t_token *head);
 
 #endif
