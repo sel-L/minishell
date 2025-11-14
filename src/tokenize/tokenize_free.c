@@ -6,7 +6,7 @@
 /*   By: joloo <joloo@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 12:37:52 by joloo             #+#    #+#             */
-/*   Updated: 2025/11/14 11:44:53 by joloo            ###   ########.fr       */
+/*   Updated: 2025/11/14 11:49:55 by joloo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	free_tokens(t_token **lst)
 {
 	t_token	*temp;
 
+	if (lst == NULL)
+		return ;
 	while (*lst != NULL)
 	{
 		temp = (*lst)->next;
