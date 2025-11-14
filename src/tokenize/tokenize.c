@@ -6,7 +6,7 @@
 /*   By: joloo <joloo@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 11:38:46 by joloo             #+#    #+#             */
-/*   Updated: 2025/11/13 13:09:44 by joloo            ###   ########.fr       */
+/*   Updated: 2025/11/14 15:33:48 by joloo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ t_token	*tokenize(char *input)
 	t_tok	data;
 	int		i;
 
+	if (input == NULL)
+		return (printf("NULL INPUT"), NULL);
 	if (tokenize_init(&data, input) == FAILURE)
 		return (NULL);
 	i = 0;
@@ -30,12 +32,40 @@ t_token	*tokenize(char *input)
 			i++;
 		if (data.input[i] == '\0')
 			break ;
-		if (tokenize_extract(&data, &i) == 0)
+		if (tokenize_add_token(&data, &i) == 0)
 		{
+			free_tokens(&(data.head));
 			tokenize_free(&data);
 			return (NULL);
 		}
 	}
+	tokenize_print_tokens(data.head, data.token_lookup);
 	tokenize_free(&data);
-	return (head);
+	return (data.head);
 }
+
+int tokenize_add_token(t_tok *data, int *i)
+{
+	data->type = detect_type(data, *i);
+	if (data->type == WORD)
+	{
+		if (tokenize_add_word(data, i) == FAILURE)
+			return (FAILURE);
+	}
+	else
+	{
+		if (tokenize_add_operator(data, i) == FAILURE)
+			return (FAILURE);
+	}
+	return (SUCCESS);
+}
+
+// int	main(void)
+// {
+// 	char *str = "aa>'aaw'| a w >>><";
+// 	t_token *head = tokenize(str);
+// 	if (head == NULL)
+// 		return (printf("NULL"), 1);
+// 	free_tokens(&head);
+// 	return (0);
+// }

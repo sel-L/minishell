@@ -1,36 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tokenize_extract.c                                 :+:      :+:    :+:   */
+/*   tokenize_print_tokens.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joloo <joloo@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/13 13:09:34 by joloo             #+#    #+#             */
-/*   Updated: 2025/11/13 14:57:49 by joloo            ###   ########.fr       */
+/*   Created: 2025/11/14 14:42:24 by joloo             #+#    #+#             */
+/*   Updated: 2025/11/14 15:23:37 by joloo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tokenize_internal.h"
 
-int	tokenize_process(t_tok *data, int *i)
+void	tokenize_print_tokens(t_token *head, char **lookup)
 {
-	int	type;
+	// (void) head;
+	// (void) lookup;
+	t_token	*curr;
 
-	type = detect_type(data, *i);
-	return (SUCCESS);
-}
-
-int	detect_type(t_tok *data, int i)
-{
-	int	type;
-
-	type = 0;
-	while (data->token_lookup[type] != NULL)
+	curr = head;
+	while (curr != NULL)
 	{
-		if (ft_strncmp(data->input + i, data->token_lookup[type],
-				ft_strlen(data->token_lookup[type])) == 0)
-			return (type);
-		type++;
+		printf("type: %s, value: %s\n", lookup[curr->type], curr->value);
+		curr = curr->next;
 	}
-	return (WORD);
 }
