@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: wee <wee@student.42.fr>                    +#+  +:+       +#+         #
+#    By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/31 10:47:03 by wshou-xi          #+#    #+#              #
-#    Updated: 2025/11/05 22:39:20 by wee              ###   ########.fr        #
+#    Updated: 2025/11/14 14:01:33 by wshou-xi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,12 +16,12 @@ LIB = -lreadline -lhistory -Llibft -lft
 RM = rm -rf
 
 MAINDIR = src
-MAINFILES = main.c
+MAINFILES = test.c token_ep.c
 MAIN = $(addprefix $(MAINDIR)/, $(MAINFILES))
 
-TOKENDIR = tokenizer
-TOKENFILES = tokenizer.c token_utils.c
-TOKEN = $(addprefix $(TOKENDIR)/, $(TOKENFILES))
+# TOKENDIR = tokenizer
+# TOKENFILES = tokenizer.c token_utils.c
+# TOKEN = $(addprefix $(TOKENDIR)/, $(TOKENFILES))
 
 SRC = $(MAIN) $(TOKEN)
 OBJDIR = obj

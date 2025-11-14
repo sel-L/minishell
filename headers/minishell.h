@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 10:47:07 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/11/06 11:18:51 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/11/14 13:55:31 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <readline/readline.h>
 # include <sys/types.h>
 # include <fcntl.h>
-# include "libft.h"
+# include "../libft/includes/libft.h"
 
 
 #endif

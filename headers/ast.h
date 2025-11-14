@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ast.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/31 10:50:10 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/11/07 12:07:52 by wshou-xi         ###   ########.fr       */
+/*   Created: 2025/11/14 14:26:34 by wshou-xi          #+#    #+#             */
+/*   Updated: 2025/11/14 14:31:15 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#ifndef AST_H
+# define AST_H
 
-// int	main()
-// {
-// 	char	*line;
+typedef struct s_ast
+{
+	char			*token;
+	int				type;
+	struct s_ast	*next;
+	struct s_ast	*prev;
+}	t_ast;
 
-// 	while (1)
-// 	{
-// 		line = readline(" ");
-// 		tokenizer(line);
-// 	}
-// 	return (0);
-// }
+
+
+
+#endif
