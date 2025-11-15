@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenize.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joloo <joloo@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 11:38:46 by joloo             #+#    #+#             */
-/*   Updated: 2025/11/15 18:09:24 by joloo            ###   ########.fr       */
+/*   Updated: 2025/11/15 18:25:38 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,13 @@ int tokenize_add_token(t_tok *data, int *i)
 	return (SUCCESS);
 }
 
-// int	main(void)
-// {
-// 	char *str = get_next_line(0);
-// 	t_token *head = tokenize(str);
-// 	if (head == NULL)
-// 		return (printf("NULL"), 1);
-// 	free_tokens(&head);
-// 	free(str);
-// 	return (0);
-// }
+int	main(void)
+{
+	char *str = get_next_line(0);
+	t_token *head = tokenize(str);
+	if (head == NULL)
+		return (printf("NULL"), 1);
+	free_tokens(&head);
+	free(str);
+	return (0);
+}
