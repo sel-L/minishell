@@ -6,7 +6,7 @@
 /*   By: joloo <joloo@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 11:38:46 by joloo             #+#    #+#             */
-/*   Updated: 2025/11/14 15:33:48 by joloo            ###   ########.fr       */
+/*   Updated: 2025/11/15 18:09:24 by joloo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,11 @@ int tokenize_add_token(t_tok *data, int *i)
 
 // int	main(void)
 // {
-// 	char *str = "aa>'aaw'| a w >>><";
+// 	char *str = get_next_line(0);
 // 	t_token *head = tokenize(str);
 // 	if (head == NULL)
 // 		return (printf("NULL"), 1);
 // 	free_tokens(&head);
+// 	free(str);
 // 	return (0);
 // }
