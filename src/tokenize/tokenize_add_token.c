@@ -6,7 +6,7 @@
 /*   By: joloo <joloo@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 11:53:11 by joloo             #+#    #+#             */
-/*   Updated: 2025/11/14 15:33:00 by joloo            ###   ########.fr       */
+/*   Updated: 2025/11/15 18:08:37 by joloo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,13 @@ int	tokenize_add_word(t_tok *data, int *i)
 	int	j;
 
 	j = 0;
-	while (data->input[*i + j] != '\0'
-		&& ft_isspace(data->input[*i + j]) == 0)
+	while (data->input[*i + j] != '\0')
 	{
 		if (detect_quotes(data->input[*i + j]) == FALSE)
 		{
 			if (detect_type(data, *i + j) != WORD)
+				break ;
+			if (ft_isspace(data->input[*i + j]) == 1)
 				break ;
 		}
 		j++;
