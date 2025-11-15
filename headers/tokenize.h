@@ -1,19 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.h                                          :+:      :+:    :+:   */
+/*   tokenize.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joloo <joloo@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/31 10:47:09 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/11/15 16:33:21 by wshou-xi         ###   ########.fr       */
+/*   Created: 2025/11/11 11:39:05 by joloo             #+#    #+#             */
+/*   Updated: 2025/11/14 14:56:34 by joloo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSING_H
-# define PARSING_H
-
-# include "minishell.h"
+#ifndef TOKENIZE_H
+# define TOKENIZE_H
 
 typedef enum e_token_type
 {
@@ -32,6 +30,7 @@ typedef struct s_token
 	struct s_token	*next;
 }	t_token;
 
-t_token	*tokenizer(char *str);
+t_token	*tokenize(char *input);
+void	free_tokens(t_token **head);
 
 #endif

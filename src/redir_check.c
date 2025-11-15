@@ -1,37 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.h                                          :+:      :+:    :+:   */
+/*   redir_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/31 10:47:09 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/11/15 16:33:21 by wshou-xi         ###   ########.fr       */
+/*   Created: 2025/11/15 16:17:14 by wshou-xi          #+#    #+#             */
+/*   Updated: 2025/11/15 16:27:24 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSING_H
-# define PARSING_H
+#include "../headers/parsing.h"
 
-# include "minishell.h"
+int	redir_val(t_token *token);
 
-typedef enum e_token_type
+int	validator(t_token *token)
 {
-	HERE_DOC,
-	APPEND,
-	REDIR_IN,
-	REDIR_OUT,
-	PIPE,
-	WORD,
-}	t_token_type;
+	if (!token)
+		return (0);
+	if (!redir_val(token))
+		return (0);
+}
 
-typedef struct s_token
+int	redir_val(t_token *token)
 {
-	char			*value;
-	t_token_type	type;
-	struct s_token	*next;
-}	t_token;
+	t_token	*next_token;
 
-t_token	*tokenizer(char *str);
-
-#endif
+	if (!token)
+		return (0);
+	next_token = token->next;
+	if (token->type == REDIR_IN || token->type == REDIR_OUT)
+	{
+		if (next_token->type != WORD)
+			return (0);
+	}
+	return (1);
+}

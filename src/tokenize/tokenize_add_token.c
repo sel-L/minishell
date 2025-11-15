@@ -1,0 +1,75 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tokenize_add_token.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: joloo <joloo@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/14 11:53:11 by joloo             #+#    #+#             */
+/*   Updated: 2025/11/14 15:33:00 by joloo            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "tokenize_internal.h"
+
+int	tokenize_add_word(t_tok *data, int *i)
+{
+	int	j;
+
+	j = 0;
+	while (data->input[*i + j] != '\0'
+		&& ft_isspace(data->input[*i + j]) == 0)
+	{
+		if (detect_quotes(data->input[*i + j]) == FALSE)
+		{
+			if (detect_type(data, *i + j) != WORD)
+				break ;
+		}
+		j++;
+	}
+	if (j > 0)
+	{
+		if (add_node(data, *i, j, data->type) == FAILURE)
+			return (FAILURE);
+		*i += j;
+	}
+	return (SUCCESS);
+}
+
+int	tokenize_add_operator(t_tok *data, int *i)
+{
+	if (add_node(data, *i,
+		ft_strlen(data->token_lookup[data->type]),
+		data->type) == FAILURE)
+		return (FAILURE);
+	*i += ft_strlen(data->token_lookup[data->type]);
+	return (SUCCESS);
+}
+
+int	add_node(t_tok *data, int start, int len, int type)
+{
+	t_token	*node;
+
+	node = ft_calloc(1, sizeof(t_token));
+	if (node == NULL)
+		return (FAILURE);
+	node->value = ft_substr(data->input, start, len);
+	if (node->value == NULL)
+	{
+		free(node);
+		node = NULL;
+		return (FAILURE);
+	}
+	node->type = type;
+	if (data->head == NULL)
+	{
+		data->head = node;
+		data->tail = node;
+	}
+	else
+	{
+		data->tail->next = node;
+		data->tail = node;
+	}
+	return (SUCCESS);
+}

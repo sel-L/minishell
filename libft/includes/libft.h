@@ -6,7 +6,7 @@
 /*   By: joloo <joloo@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 16:03:32 by joloo             #+#    #+#             */
-/*   Updated: 2025/08/11 12:15:11 by joloo            ###   ########.fr       */
+/*   Updated: 2025/11/10 16:23:55 by joloo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ void	ft_putnbr_fd(int n, int fd);
 void	ft_putunbr_fd(unsigned int n, int fd);
 int		ft_putnbr_base(int nbr, char *base, int count);
 int		ft_putunbr_base(unsigned int nbr, char *base, int count);
-void	ft_putunbr_fd(unsigned int n, int fd);
 int		ft_putlong_base(unsigned long nbr, char *base, int count);
 
 // lists
@@ -123,7 +122,14 @@ typedef struct s_gnl
 	char			*buffer;
 	struct s_gnl	*next;
 }					t_gnl;
+t_gnl	*find_fd_gnl(int fd, t_gnl **lst);
+char	*extract_line_gnl(t_gnl *lst);
+int		read_fd_gnl(t_gnl *lst, int fd);
 char	*get_next_line(int fd);
+int		find_nl_gnl(t_gnl *lst);
+char	*ft_substr_gnl(char *buffer, int start, int len);
+void	ft_realloc_gnl(char **buffer, int start, int old_size, int new_size);
+void	free_list_gnl(t_gnl *lst, t_gnl **head);
 
 // printf
 // int		ft_printf(const char *format, ...);
