@@ -6,7 +6,7 @@
 #    By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/31 10:47:03 by wshou-xi          #+#    #+#              #
-#    Updated: 2025/11/15 16:33:09 by wshou-xi         ###   ########.fr        #
+#    Updated: 2025/11/15 16:52:30 by wshou-xi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,8 @@ CFLAGS = -Wall -Werror -Wextra -Iheaders -I./libft/includes
 LIB = -lreadline -lhistory -Llibft -lft
 RM = rm -rf
 
-MAINDIR = src
-MAINFILES = test.c token_ep.c
+MAINDIR = src/parsing
+MAINFILES = test.c token_ep.c redir_check.c
 MAIN = $(addprefix $(MAINDIR)/, $(MAINFILES))
 
 # TOKENDIR = tokenizer

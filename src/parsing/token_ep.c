@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 12:57:24 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/11/14 14:21:23 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/11/15 16:59:05 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ static void	*create_and_add_token(t_token **tokens, char *token)
 /// @return token type
 static int	identify_token_type(char *token)
 {
-	printf ("token in identifier is %s\n", token);
 	if (ft_strnstr(token, "<<", 2))
 		return (HERE_DOC);
 	else if (ft_strnstr(token, ">>", 2))

@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 16:17:14 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/11/15 16:27:24 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/11/15 17:43:27 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,41 @@ int	redir_val(t_token *token);
 int	validator(t_token *token)
 {
 	if (!token)
-		return (0);
-	if (!redir_val(token))
-		return (0);
+		return (1);
+	if (redir_val(token) == 1)
+		return (perror("syntax error near unexpected token"), 1);
+	return (0);
+}
+
+int	is_redir(t_token_type t)
+{
+	return (t == REDIR_IN || t == REDIR_OUT || t == APPEND || t == PIPE);
 }
 
 int	redir_val(t_token *token)
 {
+	t_token	*curr_token;
 	t_token	*next_token;
 
-	if (!token)
-		return (0);
-	next_token = token->next;
-	if (token->type == REDIR_IN || token->type == REDIR_OUT)
+	if (!token || token->type == PIPE)
+		return (1);
+	curr_token = token;
+	if (!token->next)
+		curr_token->next = NULL;
+	next_token = curr_token->next;
+	while (next_token)
 	{
-		if (next_token->type != WORD)
-			return (0);
+		if (is_redir(token->type))
+		{
+			if (!next_token || next_token->type != WORD)
+				return (1);
+		}
+		if (!next_token || (token->type == PIPE && next_token->type == PIPE))
+			return (1);
+		curr_token = token->next;
+		next_token = curr_token->next;
 	}
-	return (1);
+	if (is_redir(token->type) && !next_token)
+		return (1);
+	return (0);
 }

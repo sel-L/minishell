@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenize.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joloo <joloo@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 11:38:46 by joloo             #+#    #+#             */
-/*   Updated: 2025/11/14 15:33:48 by joloo            ###   ########.fr       */
+/*   Updated: 2025/11/15 16:48:28 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,16 @@ int tokenize_add_token(t_tok *data, int *i)
 	return (SUCCESS);
 }
 
+// #include <readline/readline.h>
 // int	main(void)
 // {
-// 	char *str = "aa>'aaw'| a w >>><";
-// 	t_token *head = tokenize(str);
-// 	if (head == NULL)
-// 		return (printf("NULL"), 1);
-// 	free_tokens(&head);
+// 	while (1)
+// 	{
+// 		char *str = readline("here$ ");
+// 		t_token *head = tokenize(str);
+// 		if (head == NULL)
+// 			return (printf("NULL"), 1);
+// 		free_tokens(&head);
+// 	}
 // 	return (0);
 // }

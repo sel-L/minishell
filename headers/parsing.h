@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 10:47:09 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/11/15 16:33:21 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/11/15 16:49:34 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ typedef struct s_token
 }	t_token;
 
 t_token	*tokenizer(char *str);
+int		validator(t_token *token);
 
 #endif

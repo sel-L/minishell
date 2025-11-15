@@ -15,7 +15,7 @@ all: $(NAME)
 OBJECTS = $(SOURCES:.c=.o)
 
 $(NAME) : $(OBJECTS) $(LIBFT_A)
-	$(CC) $(CFLAGS) $(IFLAGS) $(OBJECTS) $(LIBFT_A) -o $(NAME) 
+	$(CC) $(CFLAGS) $(IFLAGS) $(OBJECTS) $(LIBFT_A) -lreadline -o $(NAME) 
 
 $(LIBFT_A):
 	$(MAKE) -C $(LIBFT_DIR) all
