@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 16:17:14 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/11/15 17:43:27 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/11/16 12:40:59 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,25 @@ int	validator(t_token *token)
 int	is_redir(t_token_type t)
 {
 	return (t == REDIR_IN || t == REDIR_OUT || t == APPEND || t == PIPE);
+}
+
+int	pipe_val(t_token *curr_token, t_token *next_token)
+{
+	if (curr_token->type == PIPE)
+	{
+		if (!next_token)
+			return (1);
+		if (next_token->type == PIPE)
+			return (1);
+		if (next_token->type != WORD)
+			return (1);
+	}
+	if (next_token->type == PIPE)
+	{
+		if (!next_token->next)
+			return (1);
+		if (curr_token->type)
+	}
 }
 
 int	redir_val(t_token *token)

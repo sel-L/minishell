@@ -1,32 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   input.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/14 13:49:21 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/11/16 11:56:56 by wshou-xi         ###   ########.fr       */
+/*   Created: 2025/11/16 14:10:43 by wshou-xi          #+#    #+#             */
+/*   Updated: 2025/11/16 14:20:18 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/parsing.h"
+#ifndef INPUT_H
+# define INPUT_H
 
-int	main(void)
-{
-	t_token	*tokens;
-	char	*str;
+#include "minishell.h"
 
-	while (1)
-	{
-		str = readline("line here$ ");
-		add_history(str);
-		if (*str == '\0' || str == NULL || *str == 32)
-			continue ;
-		tokens = tokenize(str);
-		printf("%d\n", validator(tokens));
-		free (tokens);
-	}
-	return (0);
+char	*ft_readline(void);
 
-}
+#endif

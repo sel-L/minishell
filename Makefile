@@ -6,7 +6,7 @@
 #    By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/31 10:47:03 by wshou-xi          #+#    #+#              #
-#    Updated: 2025/11/15 16:52:30 by wshou-xi         ###   ########.fr        #
+#    Updated: 2025/11/16 12:02:12 by wshou-xi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,12 +16,13 @@ LIB = -lreadline -lhistory -Llibft -lft
 RM = rm -rf
 
 MAINDIR = src/parsing
-MAINFILES = test.c token_ep.c redir_check.c
+MAINFILES = test.c redir_check.c
 MAIN = $(addprefix $(MAINDIR)/, $(MAINFILES))
 
-# TOKENDIR = tokenizer
-# TOKENFILES = tokenizer.c token_utils.c
-# TOKEN = $(addprefix $(TOKENDIR)/, $(TOKENFILES))
+TOKENDIR = src/tokenize
+TOKENFILES = tokenize_add_token.c tokenize_detect.c tokenize_free.c \
+			tokenize_init.c tokenize_print_tokens.c tokenize.c
+TOKEN = $(addprefix $(TOKENDIR)/, $(TOKENFILES))
 
 SRC = $(MAIN) $(TOKEN)
 OBJDIR = obj
