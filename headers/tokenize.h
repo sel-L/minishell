@@ -6,13 +6,18 @@
 /*   By: joloo <joloo@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 11:39:05 by joloo             #+#    #+#             */
-/*   Updated: 2025/11/14 14:56:34 by joloo            ###   ########.fr       */
+/*   Updated: 2025/11/15 18:32:23 by joloo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TOKENIZE_H
 # define TOKENIZE_H
 
+// here_doc = <<
+// append = >>
+// redir_in = <
+// redir_out = >
+// pipe = |
 typedef enum e_token_type
 {
 	HERE_DOC,

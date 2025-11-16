@@ -31,6 +31,7 @@ $(IO_DIR)/ft_putunbr_base.c \
 $(IO_DIR)/ft_putnbr_fd.c \
 $(IO_DIR)/ft_putstr_fd.c \
 $(IO_DIR)/ft_putunbr.c \
+$(IO_DIR)/get_next_line_utils.c \
 $(IO_DIR)/get_next_line.c \
 $(LIST_DIR)/ft_lstadd_back.c \
 $(LIST_DIR)/ft_lstadd_front.c \

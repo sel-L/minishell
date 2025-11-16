@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 11:38:46 by joloo             #+#    #+#             */
-/*   Updated: 2025/11/15 16:48:28 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/11/16 11:52:58 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,11 @@ int tokenize_add_token(t_tok *data, int *i)
 // #include <readline/readline.h>
 // int	main(void)
 // {
-// 	while (1)
-// 	{
-// 		char *str = readline("here$ ");
-// 		t_token *head = tokenize(str);
-// 		if (head == NULL)
-// 			return (printf("NULL"), 1);
-// 		free_tokens(&head);
-// 	}
+// 	char *str = get_next_line(0);
+// 	t_token *head = tokenize(str);
+// 	if (head == NULL)
+// 		return (printf("NULL"), 1);
+// 	free_tokens(&head);
+// 	free(str);
 // 	return (0);
 // }
