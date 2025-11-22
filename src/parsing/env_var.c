@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_var.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/22 14:26:33 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/11/22 18:50:01 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/11/23 02:34:41 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	free_env(t_env_list *env_list)
 int	add_env_list(char *env, t_env_list **list)
 {
 	t_env_list	*m_env;
-	t_env_list	*last;
+	static t_env_list	*last;
 
 	m_env = malloc(sizeof(t_env_list));
 	if (!m_env)
@@ -43,7 +43,8 @@ int	add_env_list(char *env, t_env_list **list)
 		*list = m_env;
 	else
 	{
-		last = *list;
+		if (last == NULL)
+			last = *list;
 		while (last->next)
 			last = last->next;
 		last->next = m_env;
@@ -72,18 +73,20 @@ t_env_list	*env_to_list(char **env)
 void	print_env(char **envp)
 {
 	t_env_list	*env;
+	t_env_list	*head;
 	int			i = 0;
 
 	env = env_to_list(envp);
 	if (!env)
 		return ;
+	head = env;
 	while (env)
 	{
 		printf("env %d is %s\n", i, env->env_val);
 		env = env->next;
 		i++;
 	}
-	free_env(env);
+	free_env(head);
 	return ;
 }
 
