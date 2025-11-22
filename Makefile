@@ -6,7 +6,7 @@
 #    By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/31 10:47:03 by wshou-xi          #+#    #+#              #
-#    Updated: 2025/11/16 12:02:12 by wshou-xi         ###   ########.fr        #
+#    Updated: 2025/11/22 18:39:02 by wshou-xi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ LIB = -lreadline -lhistory -Llibft -lft
 RM = rm -rf
 
 MAINDIR = src/parsing
-MAINFILES = test.c redir_check.c
+MAINFILES = test.c redir_check.c env_var.c
 MAIN = $(addprefix $(MAINDIR)/, $(MAINFILES))
 
 TOKENDIR = src/tokenize

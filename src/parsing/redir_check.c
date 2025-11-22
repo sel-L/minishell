@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 16:17:14 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/11/16 12:40:59 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/11/22 18:39:27 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int	pipe_val(t_token *curr_token, t_token *next_token)
 	{
 		if (!next_token->next)
 			return (1);
-		if (curr_token->type)
 	}
+	return (0);
 }
 
 int	redir_val(t_token *token)
