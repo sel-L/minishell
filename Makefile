@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+         #
+#    By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/31 10:47:03 by wshou-xi          #+#    #+#              #
-#    Updated: 2025/11/22 18:39:02 by wshou-xi         ###   ########.fr        #
+#    Updated: 2025/11/23 19:36:55 by wshou-xi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ LIB = -lreadline -lhistory -Llibft -lft
 RM = rm -rf
 
 MAINDIR = src/parsing
-MAINFILES = test.c redir_check.c env_var.c
+MAINFILES = test.c redir_check.c env_var.c env_var_utils.c
 MAIN = $(addprefix $(MAINDIR)/, $(MAINFILES))
 
 TOKENDIR = src/tokenize
