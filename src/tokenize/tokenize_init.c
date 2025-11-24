@@ -6,7 +6,7 @@
 /*   By: joloo <joloo@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 12:03:43 by joloo             #+#    #+#             */
-/*   Updated: 2025/11/14 15:23:26 by joloo            ###   ########.fr       */
+/*   Updated: 2025/11/24 12:41:44 by joloo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	tokenize_init(t_tok *data, char *input)
 {
-	ft_memset(data, 0, sizeof(*data));
+	ft_memset(data, 0, sizeof(t_tok));
 	if (init_lookup(data) == FAILURE)
 		return (FAILURE);
 	data->input = input;

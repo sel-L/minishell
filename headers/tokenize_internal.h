@@ -6,7 +6,7 @@
 /*   By: joloo <joloo@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 12:39:00 by joloo             #+#    #+#             */
-/*   Updated: 2025/11/14 15:34:02 by joloo            ###   ########.fr       */
+/*   Updated: 2025/11/24 12:34:04 by joloo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,15 @@ typedef struct s_tok
 	t_token	*tail;
 	int		type;
 	char	**token_lookup;
+	int		in_squote;
+	int		in_dquote;
 }	t_tok;
 
 int		tokenize_add_word(t_tok *data, int *i);
 int		tokenize_add_operator(t_tok *data, int *i);
 int		add_node(t_tok *data, int start, int len, int type);
 
-int		detect_quotes(char c);
+void	detect_quotes(char c, int *in_squote, int *in_dquote);
 int		detect_type(t_tok *data, int i);
 
 void	tokenize_free(t_tok *data);
