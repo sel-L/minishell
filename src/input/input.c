@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 14:10:09 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/11/16 14:20:09 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/11/22 18:58:42 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,5 @@ char	*ft_readline(void)
 	add_history(str);
 	if (*str == 32 || str == NULL || *str == '\0')
 		return (NULL);
-	return (str);	
+	return (str);
 }

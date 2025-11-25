@@ -3,53 +3,49 @@
 /*                                                        :::      ::::::::   */
 /*   env_var.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/22 14:26:33 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/11/24 15:44:46 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/11/25 18:39:54 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/parsing.h"
 #include <readline/readline.h>
 
-int	change_value(char *src, int flag, t_env_list **list)
+int	change_value(char *src, t_env_list **list)
 {
 	t_env_list	*temp;
 	int			len;
 	char		*front;
+	char		*ori;
 
 	if (!src || !list || !*list)
 		return (1);
-	front = src;
-	while(front[len] && front[len] != '=')
+	ori = src;
+	len = 0;
+	while(src[len] && src[len] != '=')
 		len++;
-	front = ft_substr(src, 0, len + 1);
-	if (flag == 1 && (find_env_front(front, list)))
-			return (free(front), 0);
-	if (flag == 2 && (find_env_front(front, list)))
-	{
-		temp = find_env_front(front, list);
-		free (temp->env_val);
-		temp->env_val = ft_substr(src, len + 1, ft_strlen(src) - len - 1);
-		return (free(front), 0);
-	}
-	return (free(front) ,1);
+	front = ft_substr(ori, 0, len + 1);
+	temp = find_env_front(ori, list);
+	free (temp->env_val);
+	temp->env_val = ft_substr(src, len + 1, ft_strlen(src) - len - 1);
+	return (free(front), 0);
 }
 
 int	add_env_node(t_env_list *node ,t_env_list **list)
 {
-	static t_env_list	**last;
+	t_env_list	*last;
 
 	if (*list == NULL)
 		return ((*list = node), 0);
 	node->next = NULL;
 	node->prev = NULL;
-	if (last == NULL)
-		last = list;
-	while ((*last)->next)
-		last = (*last)->next;
-	(*last)->next = node;
+	last = *list;
+	while (last->next)
+		last = last->next;
+	last->next = node;
+	node->prev = last;
 	return (0);
 }
 
@@ -60,7 +56,6 @@ int	add_env_node(t_env_list *node ,t_env_list **list)
 int	add_env(char *env, t_env_list **list)
 {
 	t_env_list			*m_env;
-	static t_env_list	*last;
 	char				*temp;
 
 	m_env = malloc(sizeof(t_env_list));
@@ -69,15 +64,14 @@ int	add_env(char *env, t_env_list **list)
 		env++;
 	m_env->front = ft_substr(temp, 0, (env - temp) + 1);
 	m_env->env_val = ft_substr(env, 1, (ft_strlen(env)));
-	if (change_value(temp, 1, list) == 0)
-		return (change_value(env, 2, list), 0);
+	if (find_env_front(m_env->front, list) != NULL)
+		return (change_value(env, list), 0);
 	if (!m_env->env_val)
 		return (free(m_env->front), free(m_env), 1);
 	m_env->next = NULL;
 	m_env->prev = NULL;
 	if (*list == NULL)
 		return ((*list = m_env), 0);
-
 	return (0);
 }
 
@@ -128,7 +122,7 @@ t_env_list	*env_to_list(char **env)
 	while (env[i])
 	{
 		if (add_env(env[i], &env_list) == 1)
-			free_env(env_list);
+			return (free_env(env_list), 1);
 		i++;
 	}
 	curr = env_list;
