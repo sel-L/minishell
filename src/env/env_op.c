@@ -3,19 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   env_op.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 16:35:25 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/11/26 16:39:19 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/11/26 23:06:33 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/parsing.h"
 
-/// @brief create a env node with the content and add it to the back of the list
+/// @brief create new node with the content and add it to the back of the list
+/// @brief If node exist, change the value of the node
 /// @param env 
 /// @param list 
-/// @return 0 for success 1 for error
+/// @return flag, 0 for success 1 for error
 int	add_env(char *env, t_env_list **list)
 {
 	t_env_list	*m_env;
@@ -41,10 +42,10 @@ int	add_env(char *env, t_env_list **list)
 	return (add_env_node(m_env, list));
 }
 
-/// @brief 
+/// @brief remove the specific node from the list
 /// @param target 
 /// @param list 
-/// @return 
+/// @return flag, 0 for success 1 for fail
 int	remove_env(char *target, t_env_list **list)
 {
 	t_env_list	*curr;

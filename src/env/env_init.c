@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   env_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 16:35:28 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/11/26 17:42:18 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/11/26 23:05:19 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/parsing.h"
 
 /// @brief loop through the envp from main and call add_env_list
-/// @param env 
+/// @param env
 /// @return env linked list
 t_env_list	*env_to_list(char **env)
 {
@@ -33,6 +33,9 @@ t_env_list	*env_to_list(char **env)
 	return (env_list);
 }
 
+/// @brief Convert env_list to char ** for execve
+/// @param list
+/// @return 2d array, envp
 char	**list_to_char(t_env_list **list)
 {
 	t_env_list	*temp;
