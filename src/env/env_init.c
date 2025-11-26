@@ -6,14 +6,14 @@
 /*   By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 16:35:28 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/11/26 23:05:19 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/11/27 00:42:40 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/parsing.h"
 
 /// @brief loop through the envp from main and call add_env_list
-/// @param env
+/// @param env 
 /// @return env linked list
 t_env_list	*env_to_list(char **env)
 {
@@ -36,10 +36,9 @@ t_env_list	*env_to_list(char **env)
 /// @brief Convert env_list to char ** for execve
 /// @param list
 /// @return 2d array, envp
-char	**list_to_char(t_env_list **list)
+char	**list_to_char(t_env_list **list, char **res)
 {
 	t_env_list	*temp;
-	char		**res;
 	char		*temp_s;
 	char		*front;
 	int			size;

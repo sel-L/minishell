@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 19:12:12 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/11/26 23:01:16 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/11/27 00:46:13 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ t_env_list	*find_env_front(char *to_find, t_env_list **list)
 	}
 	return (NULL);
 }
+
 /// @brief Delete a node from the env_list
 /// @param list 
 /// @return updated env_list
@@ -54,7 +55,7 @@ t_env_list	**delete_node(t_env_list **list)
 /// @param env_list 
 void	free_env(t_env_list *env_list)
 {
-	t_env_list *temp;
+	t_env_list	*temp;
 
 	while (env_list)
 	{
@@ -81,7 +82,7 @@ int	change_value(char *src, t_env_list **list)
 		return (1);
 	ori = src;
 	len = 0;
-	while(src[len] && src[len] != '=')
+	while (src[len] && src[len] != '=')
 		len++;
 	front = ft_substr(ori, 0, len + 1);
 	if (!front)
@@ -93,14 +94,14 @@ int	change_value(char *src, t_env_list **list)
 	temp->env_val = ft_substr(ori, len + 1, ft_strlen(ori) - len - 1);
 	if (!temp->env_val)
 		return (free(front), 1);
-	return (free(front) ,0);
+	return (free(front), 0);
 }
 
 /// @brief Add node into env_list
 /// @param node 
 /// @param list 
 /// @return flag, 0 for success 1 for fail
-int	add_env_node(t_env_list *node ,t_env_list **list)
+int	add_env_node(t_env_list *node, t_env_list **list)
 {
 	t_env_list	*curr;
 

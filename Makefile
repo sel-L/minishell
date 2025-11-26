@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+         #
+#    By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/31 10:47:03 by wshou-xi          #+#    #+#              #
-#    Updated: 2025/11/26 17:12:57 by wshou-xi         ###   ########.fr        #
+#    Updated: 2025/11/27 00:31:22 by wshou-xi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ CC = cc
 CFLAGS = -Wall -Werror -Wextra -Iheaders -I./libft/includes
 LIB = -lreadline -lhistory -Llibft -lft
 RM = rm -rf
+VALGRIND = valgrind --leak-check=full --show-leak-kinds=all --tool=memcheck --track-origins=yes --verbose
 
 MAINDIR = src/parsing
 MAINFILES = test.c redir_check.c

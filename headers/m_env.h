@@ -3,15 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   m_env.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/22 14:28:05 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/11/26 17:03:04 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/11/27 00:42:56 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef M_ENV_H
 #define M_ENV_H
+
+# define FT "front"
+# define VL "env_val"
+
 
 typedef struct	s_env_list
 {
@@ -31,6 +35,7 @@ int			remove_env(char *target, t_env_list **list);
 void		print_env(t_env_list *env);
 t_env_list	*env_to_list(char **env);
 int			env_size(t_env_list **list);
-char		**list_to_char(t_env_list **list);
+char		**list_to_char(t_env_list **list, char **res);
+void		print_arr_str(char **str);
 
 #endif
