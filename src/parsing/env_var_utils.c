@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_var_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 19:12:12 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/11/24 10:19:54 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/11/26 12:17:57 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_env_list	*find_env_front(char *to_find, t_env_list **list)
 		return (NULL);
 	while (temp)
 	{
-		if (ft_strcmp(to_find, temp->front) != 0)
+		if (ft_strcmp(to_find, temp->front) == 0)
 			return (temp);
 		temp = temp->next;
 	}
@@ -37,7 +37,7 @@ t_env_list	**delete_node(t_env_list **list)
 	temp = *list;
 	*list = temp->next;
 	if (*list)
-		(*list)->prev = temp->prev;
+		(*list)->prev = NULL;
 	free (temp->env_val);
 	free (temp->front);
 	free (temp);
@@ -58,5 +58,4 @@ void	free_env(t_env_list *env_list)
 		free(env_list);
 		env_list = temp;
 	}
-	return ;
 }
