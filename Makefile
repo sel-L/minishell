@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+         #
+#    By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/31 10:47:03 by wshou-xi          #+#    #+#              #
-#    Updated: 2025/11/23 19:36:55 by wshou-xi         ###   ########.fr        #
+#    Updated: 2025/11/26 17:12:57 by wshou-xi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ LIB = -lreadline -lhistory -Llibft -lft
 RM = rm -rf
 
 MAINDIR = src/parsing
-MAINFILES = test.c redir_check.c env_var.c env_var_utils.c
+MAINFILES = test.c redir_check.c
 MAIN = $(addprefix $(MAINDIR)/, $(MAINFILES))
 
 TOKENDIR = src/tokenize
@@ -24,11 +24,15 @@ TOKENFILES = tokenize_add_token.c tokenize_detect.c tokenize_free.c \
 			tokenize_init.c tokenize_print_tokens.c tokenize.c
 TOKEN = $(addprefix $(TOKENDIR)/, $(TOKENFILES))
 
-SRC = $(MAIN) $(TOKEN)
+ENVDIR = src/env
+ENVFILES = env_init.c env_op.c env_utils.c env_var_utils.c env_vars.c
+ENV = $(addprefix $(ENVDIR)/, $(ENVFILES))
+
+SRC = $(MAIN) $(TOKEN) $(ENV)
 OBJDIR = obj
 OBJS = $(SRC:%.c=$(OBJDIR)/%.o)
 
-VPATH = $(MAINDIR) $(TOKENDIR)
+VPATH = $(MAINDIR) $(TOKENDIR) $(ENV)
 
 NAME = minishell
 

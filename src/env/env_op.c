@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env_var.c                                          :+:      :+:    :+:   */
+/*   env_op.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/22 14:26:33 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/11/26 15:50:01 by wshou-xi         ###   ########.fr       */
+/*   Created: 2025/11/26 16:35:25 by wshou-xi          #+#    #+#             */
+/*   Updated: 2025/11/26 16:39:19 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/parsing.h"
-#include <readline/readline.h>
 
 /// @brief create a env node with the content and add it to the back of the list
 /// @param env 
@@ -69,56 +68,4 @@ int	remove_env(char *target, t_env_list **list)
 		curr = curr->next;
 	}
 	return (free (target), 1);
-}
-
-/// @brief loop through the envp from main and call add_env_list
-/// @param env 
-/// @return env linked list
-t_env_list	*env_to_list(char **env)
-{
-	t_env_list	*env_list;
-	int			i;
-
-	env_list = NULL;
-	if (!env || !*env)
-		return (NULL);
-	i = 0;
-	while (env[i])
-	{
-		if (add_env(env[i], &env_list) == 1)
-			return (free_env(env_list), NULL);
-		i++;
-	}
-	return (env_list);
-}
-
-char	**list_to_char()
-
-void	print_env(t_env_list *env)
-{
-	if (!env)
-		return ;
-	while (env)
-	{
-		printf("%s\n", env->env_val);
-		env = env->next;
-	}
-	return ;
-}
-
-int	main(int ac, char **av, char **envp)
-{
-	t_env_list	*env_list;
-
-	(void)ac;
-	(void)av;
-	env_list = env_to_list(envp);
-	remove_env("SHELL", &env_list);
-	add_env("A=10", &env_list);
-	// print_env(env_list);
-	// printf("\n\n\n");
-	remove_env("A", &env_list);
-	print_env(env_list);
-	free_env(env_list);
-	return (0);
 }

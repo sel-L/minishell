@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/22 14:28:05 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/11/26 15:10:27 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/11/26 17:03:04 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,11 @@ t_env_list	*find_env_front(char *to_find, t_env_list **list);
 int			change_value(char *src, t_env_list **list);
 int			add_env_node(t_env_list *node ,t_env_list **list);
 void		free_env(t_env_list *env_list);
+int			add_env(char *env, t_env_list **list);
+int			remove_env(char *target, t_env_list **list);
+void		print_env(t_env_list *env);
+t_env_list	*env_to_list(char **env);
+int			env_size(t_env_list **list);
+char		**list_to_char(t_env_list **list);
 
 #endif
