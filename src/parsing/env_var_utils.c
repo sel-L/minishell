@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 19:12:12 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/11/26 12:17:57 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/11/26 15:09:38 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,46 @@ void	free_env(t_env_list *env_list)
 		free(env_list);
 		env_list = temp;
 	}
+}
+
+int	change_value(char *src, t_env_list **list)
+{
+	t_env_list	*temp;
+	int			len;
+	char		*front;
+	char		*ori;
+
+	if (!src || !list || !*list)
+		return (1);
+	ori = src;
+	len = 0;
+	while(src[len] && src[len] != '=')
+		len++;
+	front = ft_substr(ori, 0, len + 1);
+	if (!front)
+		return (1);
+	temp = find_env_front(front, list);
+	if (!temp)
+		return (free(front), 1);
+	free (temp->env_val);
+	temp->env_val = ft_substr(ori, len + 1, ft_strlen(ori) - len - 1);
+	if (!temp->env_val)
+		return (free(front), 1);
+	return (free(front) ,0);
+}
+
+int	add_env_node(t_env_list *node ,t_env_list **list)
+{
+	t_env_list	*curr;
+
+	if (*list == NULL)
+		return ((*list = node), 0);
+	node->next = NULL;
+	node->prev = NULL;
+	curr = *list;
+	while (curr->next)
+		curr = curr->next;
+	curr->next = node;
+	node->prev = curr;
+	return (0);
 }
