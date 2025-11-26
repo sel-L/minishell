@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/22 14:26:33 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/11/26 14:21:01 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/11/26 15:52:13 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ t_env_list	*env_to_list(char **env)
 	while (env[i])
 	{
 		if (add_env(env[i], &env_list) == 1)
-			return (free_env(env_list), 1);
+			return (free_env(env_list), NULL);
 		i++;
 	}
 	return (env_list);
