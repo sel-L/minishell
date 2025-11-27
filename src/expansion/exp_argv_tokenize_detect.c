@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exp_argv.c                                         :+:      :+:    :+:   */
+/*   exp_argv_tokenize_detect.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joloo <joloo@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/24 10:26:02 by joloo             #+#    #+#             */
-/*   Updated: 2025/11/27 14:22:53 by joloo            ###   ########.fr       */
+/*   Created: 2025/11/27 14:24:30 by joloo             #+#    #+#             */
+/*   Updated: 2025/11/27 15:59:36 by joloo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "expansion_argv_internal.h"
+#include "exp_argv_internal.h"
 
-char **expand_argv(char **argv, t_env_list *env)
+void	detect_quotes(char c, int *in_squote, int *in_dquote)
 {
-	t_exp_argv_data data;
-
-	ft_memset(&data, 0, sizeof(t_exp_argv_data));
-	data.argv = argv;
-	data.env = env;
-	if (expansion_argv_tokenize(&data) == FAILURE)
-		return (expand_argv_free(&data), NULL);
-	return (data.res);
+	if (c == '\'' && *in_dquote == 0)
+	{
+		if (*in_squote == 0)
+			*in_squote = 1;
+		else
+			*in_squote = 0;
+	}
+	if (c == '\"' && *in_squote == 0)
+	{
+		if (*in_dquote == 0)
+			*in_dquote = 1;
+		else
+			*in_dquote = 0;
+	}
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   expansion_argv_internal.h                          :+:      :+:    :+:   */
+/*   exp_argv_internal.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joloo <joloo@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 16:23:19 by joloo             #+#    #+#             */
-/*   Updated: 2025/11/26 17:04:19 by joloo            ###   ########.fr       */
+/*   Updated: 2025/11/27 16:00:00 by joloo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@
 
 typedef enum e_token_type
 {
-	VARIABLE,
+	VAR,
+	DOUBLE_QUOTED_VAR.
 	DELIMITER,
 	WORD,
 }	t_token_type;
@@ -52,7 +53,6 @@ typedef struct s_exp_argv_data
 	char		**res;
 	t_token		*head;
 	t_token		*tail;
-	int			type;
 	int			in_squote;
 	int			in_dquote;
 }	t_exp_argv_data;
