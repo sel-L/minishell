@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 16:40:49 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/11/27 00:44:41 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/11/27 08:39:33 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,3 +76,17 @@ void	print_arr_str(char **str)
 		i++;
 	}
 }
+
+char	*get_value(char *key, t_env_list **list)
+{
+	t_env_list	*temp;
+	char		*res;
+
+
+	if (!key || !list || !*list)
+		return (NULL);
+	temp = find_env_key(key, list);
+	res = ft_strdup(temp->env_val);
+	return (res);
+}
+

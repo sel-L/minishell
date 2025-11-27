@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/22 14:28:05 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/11/27 00:42:56 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/11/27 08:29:28 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct	s_env_list
 }	t_env_list;
 
 t_env_list	**delete_node(t_env_list **list);
-t_env_list	*find_env_front(char *to_find, t_env_list **list);
+t_env_list	*find_env_key(char *to_find, t_env_list **list);
 int			change_value(char *src, t_env_list **list);
 int			add_env_node(t_env_list *node ,t_env_list **list);
 void		free_env(t_env_list *env_list);

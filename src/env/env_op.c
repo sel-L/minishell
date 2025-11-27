@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 16:35:25 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/11/26 23:29:14 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/11/27 08:29:37 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	add_env(char *env, t_env_list **list)
 	m_env->env_val = ft_substr(env, 1, (ft_strlen(env)));
 	if (!m_env->front || !m_env->env_val)
 		return (free(m_env->front), free(m_env->env_val), 1);
-	if (find_env_front(m_env->front, list) != NULL)
+	if (find_env_key(m_env->front, list) != NULL)
 	{
 		change_value(temp, list);
 		return (free(m_env->front), free(m_env->env_val), free(m_env), 0);
