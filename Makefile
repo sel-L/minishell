@@ -6,7 +6,7 @@
 #    By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/31 10:47:03 by wshou-xi          #+#    #+#              #
-#    Updated: 2025/11/27 00:31:22 by wshou-xi         ###   ########.fr        #
+#    Updated: 2025/11/29 14:18:14 by wshou-xi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ RM = rm -rf
 VALGRIND = valgrind --leak-check=full --show-leak-kinds=all --tool=memcheck --track-origins=yes --verbose
 
 MAINDIR = src/parsing
-MAINFILES = test.c redir_check.c
+MAINFILES = main.c redir_check.c
 MAIN = $(addprefix $(MAINDIR)/, $(MAINFILES))
 
 TOKENDIR = src/tokenize

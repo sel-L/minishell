@@ -3,74 +3,73 @@
 /*                                                        :::      ::::::::   */
 /*   redir_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 16:17:14 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/11/22 18:39:27 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/11/29 14:49:07 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/parsing.h"
 
 int	redir_val(t_token *token);
+int	pipe_val(t_token *token);
 
+/// @brief loop through all token. check for pipe and redirections
+/// @param token 
+/// @return 0 for success, 1 for fail
 int	validator(t_token *token)
 {
-	if (!token)
+	t_token	*temp;
+
+	if (!token || token->type == PIPE)
+		return (perror("syntax error near unexpected token"), 2);
+	temp = token;
+	while (temp)
+	{
+		printf("token type is: %d\n", token->type);
+		if (redir_val(temp) == 1)
+			return (perror("syntax error near unexpected token"), 2);
+		if (pipe_val(temp) == 1)
+			return (perror("syntax error near unexpected token"), 2);
+		temp = temp->next;
+	}
+	if (!token->next && token->type == PIPE)
 		return (1);
-	if (redir_val(token) == 1)
-		return (perror("syntax error near unexpected token"), 1);
 	return (0);
 }
 
 int	is_redir(t_token_type t)
 {
-	return (t == REDIR_IN || t == REDIR_OUT || t == APPEND || t == PIPE);
+	return (t == REDIR_IN || t == REDIR_OUT || t == APPEND || t == HERE_DOC);
 }
 
-int	pipe_val(t_token *curr_token, t_token *next_token)
+/// @brief pipe validation
+/// @param token 
+/// @return 0 for success 1 for fail
+int	pipe_val(t_token *token)
 {
-	if (curr_token->type == PIPE)
+	if (!token)
+		return (0);
+	if (token->type == PIPE)
 	{
-		if (!next_token)
-			return (1);
-		if (next_token->type == PIPE)
-			return (1);
-		if (next_token->type != WORD)
-			return (1);
-	}
-	if (next_token->type == PIPE)
-	{
-		if (!next_token->next)
+		if (!token->next || token->next->type != WORD)
 			return (1);
 	}
 	return (0);
 }
 
+/// @brief redirection check
+/// @param token 
+/// @return 0 for success, 1 for error
 int	redir_val(t_token *token)
 {
-	t_token	*curr_token;
-	t_token	*next_token;
-
-	if (!token || token->type == PIPE)
-		return (1);
-	curr_token = token;
-	if (!token->next)
-		curr_token->next = NULL;
-	next_token = curr_token->next;
-	while (next_token)
+	if (!token)
+		return (0);
+	if (is_redir(token->type))
 	{
-		if (is_redir(token->type))
-		{
-			if (!next_token || next_token->type != WORD)
-				return (1);
-		}
-		if (!next_token || (token->type == PIPE && next_token->type == PIPE))
+		if (!token->next || token->next->type != WORD)
 			return (1);
-		curr_token = token->next;
-		next_token = curr_token->next;
 	}
-	if (is_redir(token->type) && !next_token)
-		return (1);
 	return (0);
 }
