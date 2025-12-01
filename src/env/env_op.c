@@ -6,13 +6,13 @@
 /*   By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 16:35:25 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/11/27 08:29:37 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/11/30 23:39:39 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/parsing.h"
 
-/// @brief create new node with the content and add it to the back of the list
+/// @brief create new node with the content and add it to the back of the list,
 /// @brief If node exist, change the value of the node
 /// @param env 
 /// @param list 

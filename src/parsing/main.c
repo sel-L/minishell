@@ -6,17 +6,25 @@
 /*   By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 13:49:21 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/11/29 14:19:37 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/12/01 09:11:08 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/parsing.h"
 
-int	main(int ac, char **av, char **envp)
+char	**parsing(char *input, t_env_list *env)
 {
-	t_token		*tokens;
-	t_env_list	*env;
-	char	*str;
+	t_token		*token;
+
+	if (!input || !env)
+		return (NULL);
+}
+
+int main(int ac, char **av, char **envp)
+{
+	t_token *tokens;
+	t_env_list *env;
+	char *str;
 
 	(void)ac;
 	(void)av;
@@ -28,10 +36,10 @@ int	main(int ac, char **av, char **envp)
 		str = readline("line here$ ");
 		add_history(str);
 		if (*str == '\0' || str == NULL || *str == 32)
-			continue ;
+			continue;
 		tokens = tokenize(str);
 		printf("%d\n", validator(tokens));
-		free (tokens);
+		free(tokens);
 	}
 	return (0);
 }
