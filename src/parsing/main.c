@@ -15,9 +15,13 @@
 char	**parsing(char *input, t_env_list *env)
 {
 	t_token		*token;
+	int			(*f)(t_token *) = validator;
 
 	if (!input || !env)
 		return (NULL);
+	token = tokenize(input);
+	if (f(token) == 1)
+		return (free_tokens(token), NULL);
 }
 
 int main(int ac, char **av, char **envp)
