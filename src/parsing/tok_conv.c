@@ -12,6 +12,21 @@
 
 #include "../../headers/parsing.h"
 
+void	free_argv(char **argv)
+{
+	int	i;
+
+	if (!argv || !*argv)
+		return ;
+	i = 0;
+	while (argv[i])
+	{
+		free(argv[i]);
+		i++;
+	}
+	return ;
+}
+
 int	tok_size(t_token *token)
 {
 	t_token	*temp;

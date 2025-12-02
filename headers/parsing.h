@@ -27,5 +27,6 @@ int		validator(t_token *token);
 char	**tok_to_argv(t_token *token);
 int		tok_size(t_token *token);
 void	print_str_arr(char **str_arr);
+void	free_argv(char **argv);
 
 #endif

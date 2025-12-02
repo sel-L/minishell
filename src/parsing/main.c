@@ -46,10 +46,8 @@ int main(int ac, char **av, char **envp)
 			continue;
 		res = parsing(str, env);
 		if (res == NULL)
-			return (free_env(env), ft_free_str_arr(res), 1);
-		print_str_arr(res);
-		ft_free_str_arr(res);
+			return (ft_free_str_arr(res), free_env(env), 1);
+		free_argv(res);
 	}
 	free_env(env);
-	return (0);
 }
