@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+         #
+#    By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/31 10:47:03 by wshou-xi          #+#    #+#              #
-#    Updated: 2025/11/29 14:18:14 by wshou-xi         ###   ########.fr        #
+#    Updated: 2025/12/02 16:14:37 by wshou-xi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,13 @@ LIB = -lreadline -lhistory -Llibft -lft
 RM = rm -rf
 VALGRIND = valgrind --leak-check=full --show-leak-kinds=all --tool=memcheck --track-origins=yes --verbose
 
-MAINDIR = src/parsing
-MAINFILES = main.c redir_check.c
+MAINDIR =
+MAINFILES =
 MAIN = $(addprefix $(MAINDIR)/, $(MAINFILES))
+
+PARSEDIR = src/parsing
+PARSEFILES = main.c redir_check.c tok_conv.c
+PARSE = $(addprefix $(PARSEDIR)/, $(PARSEFILES))
 
 TOKENDIR = src/tokenize
 TOKENFILES = tokenize_add_token.c tokenize_detect.c tokenize_free.c \
@@ -29,7 +33,7 @@ ENVDIR = src/env
 ENVFILES = env_init.c env_op.c env_utils.c env_var_utils.c env_vars.c
 ENV = $(addprefix $(ENVDIR)/, $(ENVFILES))
 
-SRC = $(MAIN) $(TOKEN) $(ENV)
+SRC = $(MAIN) $(TOKEN) $(ENV) $(PARSE)
 OBJDIR = obj
 OBJS = $(SRC:%.c=$(OBJDIR)/%.o)
 

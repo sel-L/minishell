@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   env_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 16:40:49 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/11/27 08:39:33 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/12/02 16:29:07 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/parsing.h"
+#include "../../headers/parsing.h"
 #include <string.h>
 #include <uchar.h>
 
@@ -52,29 +52,6 @@ void	print_env(t_env_list *env)
 	}
 	printf("number of env: %d\n", i);
 	return ;
-}
-
-/// @brief print str_arr
-/// @param str 
-void	print_arr_str(char **str)
-{
-	char	**temp;
-	int		i;
-
-	temp = str;
-	i = 0;
-	while (temp[i])
-	{
-		printf("%s\n", temp[i]);
-		i++;
-	}
-	printf("number of env: %d\n", i);
-	i = 0;
-	while (temp[i])
-	{
-		free(temp[i]);
-		i++;
-	}
 }
 
 char	*get_value(char *key, t_env_list **list)

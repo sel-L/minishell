@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   env_var_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 19:12:12 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/11/27 08:29:49 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/12/02 16:20:44 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/parsing.h"
+#include "../../headers/parsing.h"
 
 /// @brief Find a specific node
 /// @param to_find 

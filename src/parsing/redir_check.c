@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   redir_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 16:17:14 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/11/29 14:49:07 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/12/02 13:43:55 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/parsing.h"
+#include "../../headers/parsing.h"
 
 int	redir_val(t_token *token);
 int	pipe_val(t_token *token);

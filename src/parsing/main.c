@@ -3,47 +3,53 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 13:49:21 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/12/01 09:11:08 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/12/02 17:57:29 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/parsing.h"
+#include "../../headers/parsing.h"
 
 char	**parsing(char *input, t_env_list *env)
 {
 	t_token		*token;
-	int			(*f)(t_token *) = validator;
+	char		**argv;
 
 	if (!input || !env)
 		return (NULL);
 	token = tokenize(input);
-	if (f(token) == 1)
-		return (free_tokens(token), NULL);
+	if (validator(token) != 0)
+		return (printf("1\n"), free_tokens(&token), NULL);
+	argv = tok_to_argv(token);
+	if (!argv)
+		return (NULL);
+	free_tokens(&token);
+	return (argv);
 }
 
 int main(int ac, char **av, char **envp)
 {
-	t_token *tokens;
-	t_env_list *env;
-	char *str;
+	t_env_list	*env;
+	char		*str;
+	char		**res;
 
 	(void)ac;
 	(void)av;
 	env = env_to_list(envp);
-	print_env(env);
-	free_env(env);
 	while (1)
 	{
 		str = readline("line here$ ");
 		add_history(str);
 		if (*str == '\0' || str == NULL || *str == 32)
 			continue;
-		tokens = tokenize(str);
-		printf("%d\n", validator(tokens));
-		free(tokens);
+		res = parsing(str, env);
+		if (res == NULL)
+			return (free_env(env), ft_free_str_arr(res), 1);
+		print_str_arr(res);
+		ft_free_str_arr(res);
 	}
+	free_env(env);
 	return (0);
 }
