@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 10:47:09 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/12/02 16:21:29 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/12/03 16:29:07 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,14 @@ typedef struct	s_parsing
 	t_env_list	*env_list;
 	t_token		*token;
 }				t_parsing;
+
+typedef struct	s_node
+{
+	char			*cmd;
+	char			**argv;
+	struct s_node	*next;
+}					t_node;
+
 
 int		validator(t_token *token);
 char	**tok_to_argv(t_token *token);
