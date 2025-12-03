@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 13:49:21 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/12/02 17:57:29 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/12/04 00:51:05 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ char	**parsing(char *input, t_env_list *env)
 	if (!argv)
 		return (NULL);
 	free_tokens(&token);
+	print_str_arr(argv);
 	return (argv);
 }
 
@@ -47,6 +48,8 @@ int main(int ac, char **av, char **envp)
 		res = parsing(str, env);
 		if (res == NULL)
 			return (ft_free_str_arr(res), free_env(env), 1);
+		res = ft_2d_append_back(res, "hahah hii");
+		print_str_arr(res);
 		free_argv(res);
 	}
 	free_env(env);

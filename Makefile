@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+         #
+#    By: wshou-xi <wshou-xi>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/31 10:47:03 by wshou-xi          #+#    #+#              #
-#    Updated: 2025/12/02 16:14:37 by wshou-xi         ###   ########.fr        #
+#    Updated: 2025/12/04 00:45:20 by wshou-xi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,12 @@ MAINFILES =
 MAIN = $(addprefix $(MAINDIR)/, $(MAINFILES))
 
 PARSEDIR = src/parsing
-PARSEFILES = main.c redir_check.c tok_conv.c
+PARSEFILES = main.c redir_check.c
 PARSE = $(addprefix $(PARSEDIR)/, $(PARSEFILES))
+
+ARGVDIR = src/argv
+ARGVFILES = argv_to_node.c argv_utils.c tok_conv.c
+ARGV = $(addprefix $(ARGVDIR)/, $(ARGVFILES))
 
 TOKENDIR = src/tokenize
 TOKENFILES = tokenize_add_token.c tokenize_detect.c tokenize_free.c \
@@ -33,7 +37,7 @@ ENVDIR = src/env
 ENVFILES = env_init.c env_op.c env_utils.c env_var_utils.c env_vars.c
 ENV = $(addprefix $(ENVDIR)/, $(ENVFILES))
 
-SRC = $(MAIN) $(TOKEN) $(ENV) $(PARSE)
+SRC = $(MAIN) $(TOKEN) $(ENV) $(PARSE) $(ARGV)
 OBJDIR = obj
 OBJS = $(SRC:%.c=$(OBJDIR)/%.o)
 
