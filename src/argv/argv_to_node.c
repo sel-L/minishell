@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 16:29:30 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/12/04 20:37:53 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/12/04 20:41:58 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	add_node_back(t_node *src, t_node **node);
 
 t_node	*token_to_node(t_token *token)
 {
-	t_node 	*node;
-	t_node	*list;
-	t_token	*t_temp;
+	t_node 			*node;
+	t_node			*list;
+	static t_token	*t_temp;
 	char	**temp;
 
 	t_temp = token;
