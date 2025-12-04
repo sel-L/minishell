@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 16:40:49 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/12/02 16:29:07 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/12/04 16:57:41 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,10 @@ void	print_env(t_env_list *env)
 	return ;
 }
 
+/// @brief Get value from a key
+/// @param key 
+/// @param list 
+/// @return value of the specific key
 char	*get_value(char *key, t_env_list **list)
 {
 	t_env_list	*temp;
@@ -67,3 +71,12 @@ char	*get_value(char *key, t_env_list **list)
 	return (res);
 }
 
+int	key_value_len(char *key, t_env_list **list)
+{
+	char	*temp;
+	int		res;
+
+	temp = get_value(key, list);
+	res = ft_strlen(temp);
+	return (free(temp), res);
+}

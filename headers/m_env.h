@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   m_env.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/22 14:28:05 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/11/27 08:29:28 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/12/04 16:12:46 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void		print_env(t_env_list *env);
 t_env_list	*env_to_list(char **env);
 int			env_size(t_env_list **list);
 char		**list_to_char(t_env_list **list, char **res);
-void		print_arr_str(char **str);
+int			key_value_len(char *key, t_env_list **list);
+
 
 #endif
