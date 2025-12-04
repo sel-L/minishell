@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 10:47:09 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/12/04 00:43:11 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/12/04 11:22:38 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,7 @@ int		tok_size(t_token *token);
 void	print_str_arr(char **str_arr);
 void	free_argv(char **argv);
 char    **ft_2d_append_back(char **ori, char *content);
+char	**ft_2d_dup(char **src);
+
 
 #endif

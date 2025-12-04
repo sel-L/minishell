@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 23:48:14 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/12/04 00:59:46 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/12/04 10:58:34 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,28 @@ char	**ft_2d_append_back(char **ori, char *content)
 	temp[i] = ft_strdup(content);
 	temp[i + 1] = NULL;
 	ft_free_str_arr(ori);
+	return (temp);
+}
+
+char	**ft_2d_dup(char **src)
+{
+	char	**temp;
+	int		size;
+	int		i;
+
+	if (!src || !*src)
+		return (NULL);
+	while(src[size])
+		size++;
+	temp = malloc(sizeof(char *) * size + 1);
+	if (!temp)
+		return (NULL);
+	i = 0;
+	while(i < size)
+	{
+		temp[i] = ft_strdup(src[i]);
+		i++;
+	}
+	temp[i] = NULL;
 	return (temp);
 }
