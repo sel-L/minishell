@@ -6,7 +6,7 @@
 /*   By: joloo <joloo@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 10:26:04 by joloo             #+#    #+#             */
-/*   Updated: 2025/12/05 20:31:03 by joloo            ###   ########.fr       */
+/*   Updated: 2025/12/05 20:36:22 by joloo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,28 +62,6 @@ int	check_quotes(t_hd *data, char *delimiter)
 	}
 	if (data->delimiter == NULL)
 			return (FAILURE);
-	return (SUCCESS);
-}
-
-int	read_stdin(t_hd *data)
-{
-	int	rc;
-
-	rc = 0;
-	while (1)
-	{
-		data->buffer = ft_realloc(data->buffer, 0,
-			data->size, data->size + BUFFER_SIZE + 1);
-		if (data->buffer == NULL)
-			return (FAILURE);
-		rc = read(0, data->buffer + data->size, BUFFER_SIZE);
-		if (rc == -1)
-			return (FAILURE);
-		if (rc == 0)
-			break ;
-		data->size += rc;
-	}
-	data->buffer[data->size] = '\0';
 	return (SUCCESS);
 }
 
