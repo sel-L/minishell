@@ -6,72 +6,89 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 16:29:30 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/12/04 20:41:58 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/12/05 17:41:19 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/parsing.h"
 
-t_node	*create_node(char **argv);
 void	add_node_back(t_node *src, t_node **node);
+t_node	*token_to_node(t_token *token);
+void	print_node(t_node *node);
 
-t_node	*token_to_node(t_token *token)
+void	create_and_add_node(t_node **node, char **src)
 {
-	t_node 			*node;
-	t_node			*list;
-	static t_token	*t_temp;
-	char	**temp;
+	t_node	*temp;
 
-	t_temp = token;
-	while(t_temp)
+	temp = create_node(src);
+	ft_free_str_arr(src);
+	add_node_back(temp, node);
+}
+
+void	print_node(t_node *node)
+{
+	t_node	*temp;
+
+	temp = node;
+	while(node)
 	{
-		if (t_temp->type == WORD)
-			temp = ft_2d_append_back(temp, t_temp->value);
-		else
-		{
-			if (!temp)
-				temp = ft_2d_append_back(temp, t_temp->value);
-			node = create_node(temp);
-			add_node_back(node, &list);
-			free_node(node);
-			ft_free_str_arr(temp);
-			break ;
-		}
+		printf("first cmd is: %s\n", node->cmd);
+		print_str_arr(node->argv);
+		printf("\n");
+		node = node->next;
 	}
-}
-
-void	free_node(t_node *node)
-{
-	free(node->argv);
-	free(node->cmd);
-	free(node);
-}
-
-t_node	*create_node(char **argv)
-{
-		t_node 	*node;
-
-	node = malloc(sizeof(t_node));
-	node->cmd = ft_strdup(argv[0]);
-	node->argv = ft_2d_dup(argv);
-	node->next = NULL;
 }
 
 void	add_node_back(t_node *src, t_node **node)
 {
 	t_node	*temp;
 
-	if (!node)
+	if (!*node)
 	{
 		*node = src;
+		src->next = NULL;
 		return ;
 	}
 	temp = *node;
-	while(temp)
+	while(temp->next)
 		temp = temp->next;
 	temp->next = src;
-	if (!src->next)
-		src->next = NULL;
+	src->next = NULL;
 	return ;
 }
 
+t_node	*token_to_node(t_token *token)
+{
+	t_node			*list;
+	char			**temp;
+
+	list = NULL;
+	temp = NULL;
+	while(token)
+	{
+		if (token->type == WORD)
+			temp = ft_2d_append_back(temp, token->value);
+		else if (token->type == PIPE)
+		{
+			if (temp)
+				create_and_add_node(&list, temp);
+			temp = NULL;
+		}
+		token = token->next;
+	}
+	if (temp)
+		create_and_add_node(&list, temp);
+	return (list);
+}
+
+// int	main()
+// {
+// 	t_token	*token;
+// 	t_node	*node;
+
+// 	token = tokenize("echo -ls | pipe");
+// 	node = token_to_node(token);
+// 	print_node(node);
+// 	free_node_list(node);
+// 	return (0);
+// }

@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 10:47:09 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/12/04 20:37:45 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/12/05 15:13:15 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,10 @@ char	**ft_2d_append_back(char **ori, char *content);
 char	**ft_2d_dup(char **src);
 void	free_node(t_node *node);
 int		is_redir(t_token_type t);
+t_node	*create_node(char **argv);
+void	free_node(t_node *node);
+void	free_node_list(t_node *node);
+void	print_node(t_node *node);
+t_node	*token_to_node(t_token *token);
 
 #endif

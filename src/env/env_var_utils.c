@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 19:12:12 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/12/02 16:20:44 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/12/05 18:31:54 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ t_env_list	*find_env_key(char *to_find, t_env_list **list)
 			return (temp);
 		temp = temp->next;
 	}
-	return (NULL);
+	return (ft_strdup(""));
 }
 
-/// @brief Delete a node from the env_list
+/// @brief Delete a node from the env_list 
 /// @param list 
 /// @return updated env_list
 t_env_list	**delete_node(t_env_list **list)
