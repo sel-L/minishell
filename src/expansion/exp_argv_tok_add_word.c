@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exp_argv_tokenize_add_token.c                      :+:      :+:    :+:   */
+/*   exp_argv_tok_add_word.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joloo <joloo@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 16:35:50 by joloo             #+#    #+#             */
-/*   Updated: 2025/11/27 16:52:18 by joloo            ###   ########.fr       */
+/*   Updated: 2025/12/05 16:06:08 by joloo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	add_word(t_exp_argv_data *data, char *str, int *j)
 	int	k;
 
 	k = 0;
-	// this includes the " in "$. need fix?
 	while (str[*j + k] != '\0')
 	{
 		if (data->in_squote == FALSE)
@@ -34,9 +33,5 @@ int	add_word(t_exp_argv_data *data, char *str, int *j)
 			return (FAILURE);
 		*j += k;
 	}
-}
-
-int	add_var(t_exp_argv_data *data, char *str, int *j)
-{
-	
+	return (SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: joloo <joloo@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 16:23:19 by joloo             #+#    #+#             */
-/*   Updated: 2025/11/27 16:00:00 by joloo            ###   ########.fr       */
+/*   Updated: 2025/12/05 13:35:45 by joloo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define EXPANSION_ARGV_INTERNAL_H
 
 # include "libft.h"
+# include "expansion.h"
 
 # ifndef SUCCESS
 #  define SUCCESS 1
@@ -34,7 +35,7 @@
 typedef enum e_token_type
 {
 	VAR,
-	DOUBLE_QUOTED_VAR.
+	DOUBLE_QUOTED_VAR,
 	DELIMITER,
 	WORD,
 }	t_token_type;
@@ -49,8 +50,9 @@ typedef struct s_token
 typedef struct s_exp_argv_data
 {
 	char		**argv;
-	t_env_list	*env;
+	t_env_list	**env;
 	char		**res;
+	int			type;
 	t_token		*head;
 	t_token		*tail;
 	int			in_squote;

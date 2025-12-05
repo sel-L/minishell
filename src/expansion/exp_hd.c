@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exp_argv.c                                         :+:      :+:    :+:   */
+/*   exp_hd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joloo <joloo@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/24 10:26:02 by joloo             #+#    #+#             */
-/*   Updated: 2025/12/04 15:42:22 by joloo            ###   ########.fr       */
+/*   Created: 2025/12/04 14:48:04 by joloo             #+#    #+#             */
+/*   Updated: 2025/12/05 14:39:04 by joloo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "expansion_argv_internal.h"
+// no word splitting or quote removal
+// ignores quotes
 
-// performs expansion, word splitting and quote removal
-char	**exp_argv(char **argv, t_env_list **env)
+#include "libft.h"
+
+char	*exp_hd(char *line, t_env_list **env)
 {
-	t_exp_argv_data data;
-
-	ft_memset(&data, 0, sizeof(t_exp_argv_data));
-	data.argv = argv;
-	data.env = env;
-	if (expansion_argv_tok(&data) == FAILURE)
-		return (expand_argv_free(&data), NULL);
-	return (data.res);
+	
 }
