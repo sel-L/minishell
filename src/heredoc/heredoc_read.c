@@ -6,7 +6,7 @@
 /*   By: joloo <joloo@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/05 20:36:10 by joloo             #+#    #+#             */
-/*   Updated: 2025/12/05 21:04:19 by joloo            ###   ########.fr       */
+/*   Updated: 2025/12/05 21:06:10 by joloo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	read_stdin(t_hd *data)
 {
 	// todo: alternative to free_gnl?
 	char	*line;
-	char	*lines;
+	char	**lines;
 
 	line = get_next_line(fd);
 	i = 0;
